@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace UlElement
 {
@@ -10,18 +10,22 @@ namespace UlElement
 
             while (startTheProgram)
             {
-                int valueHelthBar = 0;
-                int valueManaBar = 0;
+                int valueHelthBar;
+                int valueManaBar;
                 Console.Write("Введите на сколько % заполнена шкалы Healthbar ( не больше 100): ");
-                valueHelthBar = int.Parse(Console.ReadLine());
+                valueHelthBar = int.Parse(Console.ReadLine()) / 2;
                 Console.Write("Введите на сколько % заполнена шкалы ManaBar ( не больше 100): ");
-                valueManaBar = int.Parse(Console.ReadLine());
-                if (valueHelthBar <= 100 && valueManaBar <= 100)
+                valueManaBar = int.Parse(Console.ReadLine()) / 2;
+
+
+                if (valueHelthBar <= 50 && valueManaBar <= 50)
                 {
                     CreateBar(valueHelthBar, ConsoleColor.Red);
                     Console.WriteLine();
                     CreateBar(valueManaBar, ConsoleColor.Blue);
+                    startTheProgram = false;
                 }
+
                 else
                 {
                     Console.WriteLine("Процент указан не верно! Попробуйте заного!");
@@ -41,7 +45,6 @@ namespace UlElement
         static void CreateBar(int value, ConsoleColor color)
         {
             int maxValue = 50;
-            value = value / 2;
             string bar = "";
 
             DrowFor(0, value, '#', ref bar);
